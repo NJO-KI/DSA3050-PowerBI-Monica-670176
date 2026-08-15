@@ -95,16 +95,53 @@ DimCustomer[Customer Id] $\rightarrow$ FactShipments[Customer Id]Cardinality: On
 
 ---
 
+
 ## 4. Section D: DAX & Business Calculations
-Measure NameWhat It CalculatesWhy It Is UsefulMain FunctionsFilter Context EffectDashboard LocationOTDR %  Percentage of total orders shipped on or ahead of scheduled date.  Core fulfillment efficiency metric for supply chains.  DIVIDE, COUNTROWS, CALCULATE  Evaluates within active Date, Market, and Carrier slicers.  Page 1 Executive KPI Ribbon  Late Delivery Risk %  Share of order lines marked with shipping delays.  Identifies operational failure rates across carriers.  DIVIDE, CALCULATE  Filters FactShipments where Late_delivery_risk = 1.  Page 1 & 2 Cards/Tables  YoY Revenue Growth %  Growth in order revenue relative to the prior year.  Tracks annual commercial expansion.  VAR, CALCULATE, SAMEPERIODLASTYEAR, DIVIDE  Shifts current DimDate filter context back by 1 year.  Page 1 Trend Analysis  % Revenue Share by Region  Regional revenue contribution relative to global revenue.  Highlights geographical revenue concentration.  DIVIDE, CALCULATE, ALL  Clears row context on DimLocation[Order Region].  Page 2 Regional Analysis  Logistics Health Status  Dynamic status indicator based on threshold risk rates.  Gives management instant visual status evaluation.  VAR, SWITCH, TRUE()  Re-evaluates status dynamically based on active filters.  Page 1 Executive Header  PY Revenue  Total Revenue generated in the same historical period last year.  Provides benchmark for current performance.  CALCULATE, SAMEPERIODLASTYEAR  Modifies filter context on DimDate[Date].  Page 1 Comparative Visuals  
+
+| Measure Name | What It Calculates | Why It Is Useful | Main Functions | Filter Context Effect | Dashboard Location |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `OTDR %`[cite: 1] | Percentage of total orders shipped on or ahead of scheduled date[cite: 1]. | Core fulfillment efficiency metric for supply chains[cite: 1]. | `DIVIDE`, `COUNTROWS`, `CALCULATE`[cite: 1] | Evaluates within active Date, Market, and Carrier slicers[cite: 1]. | Page 1 Executive KPI Ribbon[cite: 1] |
+| `Late Delivery Risk %`[cite: 1] | Share of order lines marked with shipping delays[cite: 1]. | Identifies operational failure rates across carriers[cite: 1]. | `DIVIDE`, `CALCULATE`[cite: 1] | Filters `FactShipments` where `Late_delivery_risk = 1`[cite: 1]. | Page 1 & 2 Cards/Tables[cite: 1] |
+| `YoY Revenue Growth %`[cite: 1] | Growth in order revenue relative to the prior year[cite: 1]. | Tracks annual commercial expansion[cite: 1]. | `VAR`, `CALCULATE`, `SAMEPERIODLASTYEAR`, `DIVIDE`[cite: 1] | Shifts current `DimDate` filter context back by 1 year[cite: 1]. | Page 1 Trend Analysis[cite: 1] |
+| `% Revenue Share by Region`[cite: 1] | Regional revenue contribution relative to global revenue[cite: 1]. | Highlights geographical revenue concentration[cite: 1]. | `DIVIDE`, `CALCULATE`, `ALL`[cite: 1] | Clears row context on `DimLocation[Order Region]`[cite: 1]. | Page 2 Regional Analysis[cite: 1] |
+| `Logistics Health Status`[cite: 1] | Dynamic status indicator based on threshold risk rates[cite: 1]. | Gives management instant visual status evaluation[cite: 1]. | `VAR`, `SWITCH`, `TRUE()`[cite: 1] | Re-evaluates status dynamically based on active filters[cite: 1]. | Page 1 Executive Header[cite: 1] |
+| `PY Revenue`[cite: 1] | Total Revenue generated in the same historical period last year[cite: 1]. | Provides benchmark for current performance[cite: 1]. | `CALCULATE`, `SAMEPERIODLASTYEAR`[cite: 1] | Modifies filter context on `DimDate[Date]`[cite: 1]. | Page 1 Comparative Visuals[cite: 1] |
 ---
 
-## 5. Section E: Dashboards & Storytelling
-### Executive Overview
-![Overview](screenshots/04_dashboard_overview.png)
+## 5. Section E: Professional Power BI Dashboards & Storytelling
+
+### Dashboard Architecture Overview
+
+| Page & Theme | Visual Name / Type | Fields & Configuration | Analytical Purpose |
+| :--- | :--- | :--- | :--- |
+| **Page 1: Executive Overview** <br> *(What Happened?)* | **Header Slicers** | `Year`, `Market`, `Shipping Mode` | Enables global filtering across the entire report page[cite: 1]. |
+| | **KPI Ribbon Cards** | `Total Revenue`, `Total Orders`, `OTDR %`, `Late Delivery Risk %`, `Logistics Health Status` | Gives executives immediate top-line performance visibility[cite: 1]. |
+| | **Line & Stacked Bar Chart** | **X-Axis:** `Year-Month` <br> **Column:** `Total Revenue` <br> **Line:** `Late Delivery Risk %` | Tracks volume trends against shipping delay rates over time[cite: 1]. |
+| | **Filled Geographic Map** | **Location:** `Order Country` <br> **Color Fill:** `Total Revenue` <br> **Tooltips:** `OTDR %` | Displays spatial revenue density alongside delivery efficiency[cite: 1]. |
+| | **Donut Chart** | **Legend:** `Customer Segment` <br> **Values:** `Total Orders` | Breaks down order volume by customer classification[cite: 1]. |
+| **Page 2: Detailed Analysis** <br> *(Where Did It Happen?)*[cite: 1] | **Matrix Table** | **Rows:** `Market` $\rightarrow$ `Order Region` <br> **Columns:** `Shipping Mode` <br> **Values:** `Total Revenue`, `Late Delivery Risk %`, `Avg Shipping Days` | Provides granular drill-down across logistics channels[cite: 1]. |
+| | **Clustered Bar Chart** | **Y-Axis:** `Category Name` (Top 10) <br> **X-Axis:** `Total Delayed Orders` | Highlights product categories causing the most fulfillment friction[cite: 1]. |
+| | **Scatter Plot** | **X-Axis:** `Avg Shipping Days` <br> **Y-Axis:** `Profit Margin %` <br> **Size:** `Total Revenue` <br> **Legend:** `Market` | Detects margin leakage relative to extended shipping lead times[cite: 1]. |
+| **Page 3: Diagnostic Insights** <br> *(Why Did It Happen?)*[cite: 1] | **Decomposition Tree** | **Analyze:** `Late Delivery Risk %` <br> **Explain By:** `Market` $\rightarrow$ `Shipping Mode` $\rightarrow$ `Category Name` $\rightarrow$ `Customer Segment` | Enables ad-hoc root-cause breakdown of operational delays[cite: 1]. |
+| | **Key Influencers Visual** | **Target:** `Late_delivery_risk` = High Risk <br> **Factors:** Shipping mode, Order region, Discount rate | Leverages built-in ML to find key statistical drivers of late shipments[cite: 1]. |
+| | **Waterfall Chart** | **Category:** Revenue $\rightarrow$ Discounts $\rightarrow$ Freight Costs $\rightarrow$ Net Profit | Explains profit erosion from gross revenue down to net profitability[cite: 1]. |
 
 ### Detailed Logistics Analysis
 ![Analysis](screenshots/05_dashboard_analysis.png)
 
+* **Analytical Focus:** Evaluates carrier efficiency, regional shipment performance, and product category bottlenecks[cite: 1].
+* **Key Visuals:**
+  * **Market Matrix:** Drills down from `Market` to `Order Region` across shipping modes[cite: 1].
+  * **Top Delayed Categories:** Identifies the top 10 product lines driving fulfillment delays[cite: 1].
+  * **Margin vs. Lead Time Scatter:** Spotlights regional margin erosion caused by extended shipping lead times[cite: 1].
+
+---
+
 ### Diagnostic Insights
 ![Insights](screenshots/06_dashboard_insights.png)
+
+* **Analytical Focus:** Root-cause investigation into late shipping drivers and profit leakage[cite: 1].
+* **Key Visuals:**
+  * **Decomposition Tree:** Deconstructs `Late Delivery Risk %` across regional, operational, and customer tiers[cite: 1].
+  * **Key Influencers Visual:** Uses machine learning models to highlight the top statistical drivers of high delivery risks[cite: 1].
+  * **Waterfall Chart:** Maps financial flow from gross revenue down to net order profit[cite: 1].
