@@ -128,86 +128,83 @@ DimCustomer[Customer Id] $\rightarrow$ FactShipments[Customer Id]Cardinality: On
 
 ### Detailed Logistics Analysis
 ![Analysis](screenshots/05_dashboard_analysis.png)
+
+
+```text
 ┌─────────────────────────────────────────────────────────────────────┐
-│  📊 DETAILED LOGISTICS ANALYSIS - Page 2                          │
+│  📊 DETAILED LOGISTICS ANALYSIS - Page 2                            │
 ├───────────────┬─────────────────────────────────────────────────────┤
-│               │                                                    │
-│  Market       │   MATRIX: Revenue & Delay by Market/Region/       │
-│  Filters:     │   Shipping Mode                                   │
-│  [All]        │   ┌──────────────────────────────────────────┐    │
-│               │   │ Market   │ Region  │ Mode   │ Rev   │Risk│    │
-│  Region       │   │──────────┼─────────┼────────┼───────┼─────┤    │
-│  [All]        │   │ LATAM    │ Brazil  │ Air    │ $2.4M │ 18%│    │
-│               │   │ LATAM    │ Brazil  │ Road   │ $1.1M │ 34%│    │
-│  Time Period  │   │ LATAM    │ Mexico  │ Air    │ $1.8M │ 22%│    │
-│  [2023-24]    │   │ EU       │ Germany │ Air    │ $4.2M │ 9% │    │
-│               │   │ EU       │ France  │ Sea    │ $3.1M │ 14%│    │
-│               │   │ APAC     │ Japan   │ Air    │ $5.6M │ 7% │    │
-│               │   │ APAC     │ India   │ Road   │ $2.9M │ 28%│    │
-│               │   └──────────────────────────────────────────┘    │
-│               │                                                    │
+│               │                                                     │
+│  Market       │   MATRIX: Revenue & Delay by Market/Region/         │
+│  Filters:     │   Shipping Mode                                     │
+│  [All]        │   ┌──────────────────────────────────────────┐      │
+│               │   │ Market   │ Region  │ Mode    │ Rev   │Risk│      │
+│  Region       │   │──────────┼─────────┼────────┼───────┼─────┤      │
+│  [All]        │   │ LATAM    │ Brazil  │ Air    │ $2.4M │ 18%│      │
+│               │   │ LATAM    │ Brazil  │ Road   │ $1.1M │ 34%│      │
+│  Time Period  │   │ LATAM    │ Mexico  │ Air    │ $1.8M │ 22%│      │
+│  [2023-24]    │   │ EU       │ Germany │ Air    │ $4.2M │ 9% │      │
+│               │   │ EU       │ France  │ Sea    │ $3.1M │ 14%│      │
+│               │   │ APAC     │ Japan   │ Air    │ $5.6M │ 7% │      │
+│               │   │ APAC     │ India   │ Road   │ $2.9M │ 28%│      │
+│               │   └──────────────────────────────────────────┘      │
+│               │                                                     │
 ├───────────────┴─────────────────────────────────────────────────────┤
-│                                                                    │
-│  📦 TOP DELAYED PRODUCT CATEGORIES         📈 MARGIN vs LEAD TIME │
-│  ┌──────────────────────────────────┐   ┌──────────────────────┐ │
-│  │ Electronics         ████████████ │   │ 30% │  • APAC        │ │
-│  │ Furniture           ███████████  │   │     │  • EU          │ │
-│  │ Apparel             ██████████   │   │ 20% │  • NA          │ │
-│  │ Auto Parts          ████████    │   │     │  • LATAM ██    │ │
-│  │ Home Goods          ███████     │   │ 10% │        ████    │ │
-│  └──────────────────────────────────┘   │  0% │___________██  │ │
-│                                          │     │ 5  10  15  20 │ │
-│                                          └──────────────────────┘ │
+│                                                                     │
+│  📦 TOP DELAYED PRODUCT CATEGORIES         📈 MARGIN vs LEAD TIME   │
+│  ┌──────────────────────────────────┐   ┌──────────────────────┐    │
+│  │ Electronics         ████████████ │   │ 30% │  • APAC        │    │
+│  │ Furniture           ███████████  │   │     │  • EU          │    │
+│  │ Apparel             ██████████   │   │ 20% │  • NA          │    │
+│  │ Auto Parts          ████████     │   │     │  • LATAM ██    │    │
+│  │ Home Goods          ███████      │   │ 10% │        ████    │    │
+│  └──────────────────────────────────┘   │  0% │___________██   │    │
+│                                         │     │ 5  10  15  20  │    │
+│                                         └──────────────────────┘    │
 └─────────────────────────────────────────────────────────────────────┘
 
-* **Analytical Focus:** Evaluates carrier efficiency, regional shipment performance, and product category bottlenecks[cite: 1].
-* **Key Visuals:**
-  * **Market Matrix:** Drills down from `Market` to `Order Region` across shipping modes[cite: 1].
-  * **Top Delayed Categories:** Identifies the top 10 product lines driving fulfillment delays[cite: 1].
-  * **Margin vs. Lead Time Scatter:** Spotlights regional margin erosion caused by extended shipping lead times[cite: 1].
-
----
+```
 
 ### Diagnostic Insights
 ![Insights](screenshots/06_dashboard_insights.png)
 ┌─────────────────────────────────────────────────────────────────────┐
-│  🔍 DIAGNOSTIC INSIGHTS - Root Cause Analysis                    │
+│  🔍 DIAGNOSTIC INSIGHTS - Root Cause Analysis                       │
 ├─────────────────────────────────────────────────────────────────────┤
-│                                                                    │
-│  🎯 DECOMPOSITION TREE: Late Delivery Risk %                     │
-│  ┌────────────────────────────────────────────────────────────┐   │
-│  │   TOTAL: 17.3% Late Risk                                   │   │
-│  │         │                                                  │   │
-│  │    ┌────┴────┐                                            │   │
-│  │    │         │                                            │   │
-│  │  APAC      LATAM    EU       NA                           │   │
-│  │  12%      28%     13%      16%                           │   │
-│  │    │         │                                            │   │
-│  │  ┌─┴─┐    ┌──┴──┐                                       │   │
-│  │ Air Road  Air  Road Sea                                  │   │
-│  │  7% 22%   18%  34% 24%                                  │   │
-│  └────────────────────────────────────────────────────────────┘   │
-│                                                                    │
-│  🤖 KEY INFLUENCERS: What Drives Late Delivery?                  │
-│  ┌────────────────────────────────────────────────────────────┐   │
-│  │  Shipping Mode = Road             ▲ +22% Risk             │   │
-│  │  Order Region = Brazil            ▲ +16% Risk             │   │
-│  │  Discount Rate > 15%              ▲ +11% Risk             │   │
-│  │  Product Category = Furniture     ▲ +9% Risk              │   │
-│  │  Customer Segment = Consumer      ▲ +5% Risk              │   │
-│  └────────────────────────────────────────────────────────────┘   │
-│                                                                    │
-│  💰 WATERFALL: Revenue → Net Profit Erosion                     │
-│  ┌────────────────────────────────────────────────────────────┐   │
-│  │                                                           │   │
-│  │  $100M                                                    │   │
-│  │   │  ████████████████████████████████████                │   │
-│  │   │  │ Revenue   $100M                                   │   │
-│  │   │  ▼ ─$8M ──▼ ─$5M ──▼ ─$3M ──▼ ─$2M ──▼            │   │
-│  │   │  Dscnt  Freight  Returns  Admin   Net               │   │
-│  │   │                         Profit: $82M                 │   │
-│  │   └─────────────────────────────────────────────────────────  │   │
-│  └────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  🎯 DECOMPOSITION TREE: Late Delivery Risk %                        │
+│  ┌────────────────────────────────────────────────────────────┐     │
+│  │   TOTAL: 17.3% Late Risk                                   │     │
+│  │         │                                                  │     │
+│  │    ┌────┴────┐                                             │     │
+│  │    │         │                                             │     │
+│  │ APAC     LATAM    EU       NA                              │     │
+│  │ 12%      28%     13%      16%                              │     │
+│  │  │         │                                               │     │
+│  │ ┌─┴─┐    ┌──┴──┐                                           │     │
+│  │ Air Road  Air  Road Sea                                    │     │
+│  │  7% 22%   18%  34% 24%                                     │     │
+│  └────────────────────────────────────────────────────────────┘     │
+│                                                                     │
+│  🤖 KEY INFLUENCERS: What Drives Late Delivery?                     │
+│  ┌────────────────────────────────────────────────────────────┐     │
+│  │  Shipping Mode = Road              ▲ +22% Risk             │     │
+│  │  Order Region = Brazil             ▲ +16% Risk             │     │
+│  │  Discount Rate > 15%               ▲ +11% Risk             │     │
+│  │  Product Category = Furniture      ▲ +9% Risk              │     │
+│  │  Customer Segment = Consumer       ▲ +5% Risk              │     │
+│  └────────────────────────────────────────────────────────────┘     │
+│                                                                     │
+│  💰 WATERFALL: Revenue → Net Profit Erosion                         │
+│  ┌────────────────────────────────────────────────────────────┐     │
+│  │                                                            │     │
+│  │  $100M                                                     │     │
+│  │   │  ████████████████████████████████████                  │     │
+│  │   │  │ Revenue   $100M                                     │     │
+│  │   │  ▼ ─$8M ──▼ ─$5M ──▼ ─$3M ──▼ ─$2M ──▼                  │     │
+│  │   │  Dscnt  Freight  Returns  Admin   Net                  │     │
+│  │   │                          Profit: $82M                  │     │
+│  │   └─────────────────────────────────────────               │     │
+│  └────────────────────────────────────────────────────────────┘     │
 └─────────────────────────────────────────────────────────────────────┘
 
 * **Analytical Focus:** Root-cause investigation into late shipping drivers and profit leakage[cite: 1].
