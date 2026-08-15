@@ -1,7 +1,7 @@
 # Business Intelligence Solution: Global Supply Chain & Logistics
 **Course:** DSA 3050A Business Intelligence & Data Visualization  
-**Student Name:** Your Name  
-**Registration Number:** Your Reg No  
+**Student Name:** Monica Njoki  
+**Registration Number:** 670176 
 
 ---
 
@@ -21,14 +21,16 @@
 ## 2. Section B: Power Query Transformations
 *(Include your 8 Problem → Transformation → Reason → Result entries here)*[cite: 1].
 
-![Power Query](screenshots/02_power_query.png)
+![Power Query]<img width="975" height="399" alt="image" src="https://github.com/user-attachments/assets/ca156b5c-3c93-47cf-977b-9cee3475d289" />
+)
 
 ---
 
 ## 3. Section C: Data Model & Star Schema
 *(Explain your Fact table, Dimension tables, cardinality, and Date table setup)*[cite: 1].
 
-![Data Model](screenshots/03_model.png)
+![Data Model](<img width="975" height="240" alt="image" src="https://github.com/user-attachments/assets/3c8bcc93-d534-4534-84b5-4cfa3cc46445" />
+)
 
 ---
 
